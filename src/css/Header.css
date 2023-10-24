@@ -1,0 +1,22 @@
+/* Header.css */
+.header {
+    /* background-image: url("path/to/your-image.jpg"); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    height: 30px; /* Adjust the height as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+  }
+  .header img{
+    /* background-image: url("path/to/your-image.jpg"); /* Replace with your image path */
+    height: 30px; /* Adjust the height as needed */
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  
