@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import SendMessage from './SendMessage';
 import TextField from '@mui/material/TextField';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
-// import ErrorMessage from './ErrorMessage';
-// import ErrorMessage from './ErrorMessage';
 
 const Message = () => {
   const [emailAddress, setEmailAddress] = useState('');
@@ -87,7 +85,8 @@ const Message = () => {
 
           placeholder="Please type your comments and request..." /><br />
 
-        <button type="submit">Send</button>
+          <button class="btn btn-primary" type= "submit">Send</button>
+
       </form>
     </div>
   );
