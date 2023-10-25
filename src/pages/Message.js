@@ -82,6 +82,7 @@ const Message = () => {
           className="form-control resizable"
           type="text"
           value={emailContent}
+          minRows={4}
           onChange={handleEmailContentChange}
           style={{
             width: "40%",
