@@ -2,13 +2,16 @@
 import axios from 'axios';
 
 const SendMessage = async ({content}) => {
+  console.log(content);
     try {
-      const response = await axios.post('https://qbpuji3ayb.execute-api.us-east-1.amazonaws.com/course', content);
-  
-      console.log('API Response:', response);
+      console.log(content, "and content");
+      const response = await axios.post('https://agrxhxvod2mnwchj2yyajylmsa0zsbaq.lambda-url.us-east-1.on.aws/portfolio/', content);
+      
+      console.log('API Response:', response.data);
     } catch (error) {
       console.error('Error sending text to API:', error);
     }
+    
   };
   
   export default SendMessage; 

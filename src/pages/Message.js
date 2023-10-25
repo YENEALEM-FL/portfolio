@@ -1,12 +1,15 @@
 
 import React, { useState } from 'react';
-import SendMessage from './SendMessage';
 import TextField from '@mui/material/TextField';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
+import axios from 'axios';
 
 const Message = () => {
   const [emailAddress, setEmailAddress] = useState('');
   const [emailContent, setEmailContent] = useState('');
+  let formData ={
+    "email":'',
+    "message":'',};
   const handleEmailAddressChange = (e) => {
     setEmailAddress(e.target.value);
   };
@@ -18,16 +21,16 @@ const Message = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const formData = {
-      emailAddress: emailAddress,
-      emailContent: emailContent,
+    formData = {
+      "email": emailAddress,
+      "message": emailContent,
     };
 
-    if (formData.emailAddress.trim() === '' && formData.emailContent.trim() === '') {
+    if (formData.email.trim() === '' && formData.message.trim() === '') {
       alert('Email and message fields must not be empty.');
       return;
     }
-    else if (formData.emailAddress.trim() === '') {
+    else if (formData.email.trim() === '') {
       alert('Email must not be empty.Please provide a valid email.');
       return;
     }
@@ -37,12 +40,16 @@ const Message = () => {
       return;
     }
 
-    else if (formData.emailContent.trim() === '') {
+    else if (formData.message.trim() === '') {
       alert('Message must not be empty.');
       return;
     }
     else {
-      <SendMessage content={formData} />
+      const response = axios.post('https://agrxhxvod2mnwchj2yyajylmsa0zsbaq.lambda-url.us-east-1.on.aws/portfolio/', formData);
+      response.then((res)=>{
+        console.log('API Response:', res.data);
+      }).catch((error)=>{console.log(error.message)});
+
       alert('Message is sent.');
       setEmailAddress("");
       setEmailContent("");
@@ -50,7 +57,7 @@ const Message = () => {
   };
 
   const validateEmail = (email) => {
-    // Regular expression for a basic email format validation
+    // Regular expression for a basic email format
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     return emailRegex.test(email);
   };
@@ -85,7 +92,7 @@ const Message = () => {
 
           placeholder="Please type your comments and request..." /><br />
 
-          <button class="btn btn-primary" type= "submit">Send</button>
+          <button className="btn btn-primary" type= "submit">Send</button>
 
       </form>
     </div>
