@@ -13,25 +13,25 @@ import Footer from '../components/Footer';
 import '../css/Background.css';
 import AcademicProjects from './AcademicProjects';
 
-const App = () =>{
+const App = () => {
   return (
-    <div className="Background">
+    <div className="rounded p-4 mt-3 border border-secondary col-10 col-md-8 mx-auto"> 
       <Header />
       <NavBar />
       <BrowserRouter>
         <Routes>
-          <Route path='/' element = {<Layout/>}/>
-          <Route index element = {<Resume/>}/>
-            <Route path='/Experience' element = {<Experience/>}/>
-            <Route path='/Degrees' element = {<Degrees/>}/>
-            <Route path='/Certificate' element = {<Certificate/>}/>
-            <Route path='/AcademicProjects' element = {<AcademicProjects/>}/>
-            <Route path='/Message' element = {<Message/>}/>
-            <Route path='*' element = {<NoPage/>}/>
+          <Route path='/' element={<Layout />} />
+          <Route index element={<Resume />} />
+          <Route path='/Experience' element={<Experience />} />
+          <Route path='/Degrees' element={<Degrees />} />
+          <Route path='/Certificate' element={<Certificate />} />
+          <Route path='/AcademicProjects' element={<AcademicProjects />} />
+          <Route path='/Message' element={<Message />} />
+          <Route path='*' element={<NoPage />} />
         </Routes>
       </BrowserRouter>
       <div className="black-line"></div>
-       <Footer />
+      <Footer />
     </div>
   );
 }
