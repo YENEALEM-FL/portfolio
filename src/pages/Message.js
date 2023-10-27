@@ -8,8 +8,8 @@ const Message = () => {
   const [emailAddress, setEmailAddress] = useState('');
   const [emailContent, setEmailContent] = useState('');
   let formData ={
-    "email":'',
-    "message":'',};
+    "Email":'',
+    "Message":'',};
   const handleEmailAddressChange = (e) => {
     setEmailAddress(e.target.value);
   };
@@ -22,15 +22,15 @@ const Message = () => {
     e.preventDefault();
 
     formData = {
-      "email": emailAddress,
-      "message": emailContent,
+      "Email": emailAddress,
+      "Message": emailContent,
     };
 
-    if (formData.email.trim() === '' && formData.message.trim() === '') {
+    if (formData.Email.trim() === '' && formData.Message.trim() === '') {
       alert('Email and message fields must not be empty.');
       return;
     }
-    else if (formData.email.trim() === '') {
+    else if (formData.Email.trim() === '') {
       alert('Email must not be empty.Please provide a valid email.');
       return;
     }
@@ -40,12 +40,12 @@ const Message = () => {
       return;
     }
 
-    else if (formData.message.trim() === '') {
+    else if (formData.Message.trim() === '') {
       alert('Message must not be empty.');
       return;
     }
     else {
-      const response = axios.post('https://agrxhxvod2mnwchj2yyajylmsa0zsbaq.lambda-url.us-east-1.on.aws/portfolio/', formData);
+      const response = axios.post('https://af02rka31f.execute-api.us-east-1.amazonaws.com/dev/portfolio', formData);
       response.then((res)=>{
         console.log('API Response:', res.data);
       }).catch((error)=>{console.log(error.message)});
@@ -57,7 +57,6 @@ const Message = () => {
   };
 
   const validateEmail = (email) => {
-    // Regular expression for a basic email format
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     return emailRegex.test(email);
   };
